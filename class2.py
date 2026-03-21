@@ -60,11 +60,11 @@ def reverse_sentence(sentence):
 #         return sentence
 
 
-sentence = "tubby little cubby all stuffed with fluff"
-print(reverse_sentence(sentence))
+# sentence = "tubby little cubby all stuffed with fluff"
+# print(reverse_sentence(sentence))
 
-sentence = "Pooh"
-print(reverse_sentence(sentence))
+# sentence = "Pooh"
+# print(reverse_sentence(sentence))
 
 """
 2 In the extended universe of fictional bears, 
@@ -90,11 +90,33 @@ Return the selected integer.
         returns -1 if there is not a number beetween minimun and maximun .
 
 --- PLAN ---
-1 find mion and maximun number in the input list
+ find mion and maximun number in the input list
 run through the for loop and return a number between min and max
 
 --- IMPLEMENT ---
 """
+
+
+def goldilocks_approved(nums):
+    if len(nums) < 3:
+        return -1
+
+    min_value = min(nums)
+    max_value = max(nums)
+
+    for num in nums:
+        if num > min_value and num < max_value:
+            return num
+
+
+nums = [3, 2, 1, 4]
+# print(goldilocks_approved(nums))
+
+# nums = [1, 2]
+# print(goldilocks_approved(nums))
+
+# nums = [2, 1, 3]
+# print(goldilocks_approved(nums))
 
 
 # def goldilocks_approved(nums):
@@ -118,20 +140,79 @@ run through the for loop and return a number between min and max
 # # nums = [2, 1, 3]
 # # print(goldilocks_approved(nums))
 
+
 # """
-# 3.
+# 3.Pooh is eating all of his hunny jars in order of smallest to largest. Given a list of integers hunny_jar_sizes,
+# write a function delete_minimum_elements() that continuously removes the minimum element until the list is empty.
+# Return a new list of the elements of hunny_jar_sizes in the order in which they were removed.
 # """
+def delete_minimum_elements(hunny_jar_sizes):
+    counter = len(hunny_jar_sizes)
+    result = []
+    while counter > 0:
+        min_value = min(hunny_jar_sizes)
+        result.append(min_value)
+        hunny_jar_sizes.remove(min_value)
+        counter -= 1
+    return result
 
 
-# def delete_minimum_elements(hunny_jar_sizes):
-#     removed = []
+# hunny_jar_sizes = [5, 3, 2, 4, 1]
+# print(delete_minimum_elements(hunny_jar_sizes))
 
-#     while hunny_jar_sizes:
-#         mn = min(hunny_jar_sizes)
-#         removed.append(mn)
-#         hunny_jar_sizes.remove(mn)
+# hunny_jar_sizes = [5, 2, 1, 8, 2]
+# print(delete_minimum_elements(hunny_jar_sizes))
 
-#     return removed
+
+"""
+4. Write a function sum_of_digits() that accepts an integer num and returns the sum of num's digits.
+"""
+
+
+def sum_of_digits(num):
+    if num // 10 == 0:
+        return num
+    else:
+        acum = 0
+        while num > 0:
+            actual = num % 10
+            acum += actual
+            num = num // 10
+
+        return acum
+
+
+# num = 423
+# print(sum_of_digits(num))
+
+# num = 4
+# print(sum_of_digits(num))
+
+
+"""
+5. Tigger has developed a new programming language Tiger with only four operations and one variable tigger.
+
+bouncy and flouncy both increment the value of the variable tigger by 1.
+trouncy and pouncy both decrement the value of the variable tigger by 1.
+Initially, the value of tigger is 1 because he's the only tigger around! 
+Given a list of strings operations containing a list of operations, return the final value of tigger 
+after performing all the operations.
+"""
+
+
+def final_value_after_operations(operations):
+    dict_tiger = {"bouncy": 1, "flouncy": 1, "trouncy": -1, "pouncy": -1}
+    solution = 1
+    for operation in operations:
+        solution = solution + dict_tiger[operation]
+    return solution
+
+
+operations = ["trouncy", "flouncy", "flouncy"]
+print(final_value_after_operations(operations))
+
+operations = ["bouncy", "bouncy", "flouncy"]
+print(final_value_after_operations(operations))
 
 
 # # def fizzBuzz(n):
