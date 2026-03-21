@@ -37,17 +37,34 @@ The sentence will contain only alphabetic characters and spaces to separate the 
 
 
 def reverse_sentence(sentence):
-    input_array = sentence.split()
-    result = []
+    arr = sentence.split()
 
-    for value in input_array:
-        result.insert(0, value)
+    if len(arr) < 2:
+        return sentence
+    else:
+        result = []
+        for elem in arr:
+            result.insert(0, elem)
+        return " ".join(result)
 
-    return " ".join(result)
+
+# Another approach 2
+# def reverse_sentence(sentence):
+#     arr = sentence.split()
+#     result = []
+#     if len(arr) > 1:
+#         for elem in reversed(arr):
+#             result.append(elem)
+#         return " ".join(result)
+#     else:
+#         return sentence
 
 
-# sentence = "tubby little cubby all stuffed with fluff"
-# print(reverse_sentence(sentence))
+sentence = "tubby little cubby all stuffed with fluff"
+print(reverse_sentence(sentence))
+
+sentence = "Pooh"
+print(reverse_sentence(sentence))
 
 """
 2 In the extended universe of fictional bears, 
@@ -80,66 +97,92 @@ run through the for loop and return a number between min and max
 """
 
 
-def goldilocks_approved(nums):
-    if len(nums) < 3:
-        return -1
+# def goldilocks_approved(nums):
+#     if len(nums) < 3:
+#         return -1
 
-    min_num = min(nums)
-    max_num = max(nums)
+#     min_num = min(nums)
+#     max_num = max(nums)
 
-    for num in nums:
-        if num != min_num and num != max_num:
-            return num
-
-
-# nums = [3, 2, 1, 4]
-# print(goldilocks_approved(nums))
-
-# nums = [1, 2]
-# print(goldilocks_approved(nums))
-
-# nums = [2, 1, 3]
-# print(goldilocks_approved(nums))
-
-"""
-3
-"""
+#     for num in nums:
+#         if num != min_num and num != max_num:
+#             return num
 
 
-def delete_minimum_elements(hunny_jar_sizes):
-    removed = []
+# # nums = [3, 2, 1, 4]
+# # print(goldilocks_approved(nums))
 
-    while hunny_jar_sizes:
-        mn = min(hunny_jar_sizes)
-        removed.append(mn)
-        hunny_jar_sizes.remove(mn)
+# # nums = [1, 2]
+# # print(goldilocks_approved(nums))
 
-    return removed
+# # nums = [2, 1, 3]
+# # print(goldilocks_approved(nums))
 
-
-# def fizzBuzz(n):
-#     for i in range(n):
-#         if i % 3 == 0 and i % 5 == 0:
-#             print("fizzBuzz")
-#         elif i % 3 == 0:
-#             print("Fizz")
-#         elif i % 5 == 0:
-#             print("Buzz")
-#         else:
-#             print(i)
+# """
+# 3.
+# """
 
 
-# fizzBuzz(15)
+# def delete_minimum_elements(hunny_jar_sizes):
+#     removed = []
+
+#     while hunny_jar_sizes:
+#         mn = min(hunny_jar_sizes)
+#         removed.append(mn)
+#         hunny_jar_sizes.remove(mn)
+
+#     return removed
 
 
-def has_all_unique_characters(s):
-    if s == "":
-        return True
-    else:
-        input_array = s.split()
-        return len(input_array) == len(set(input_array))
+# # def fizzBuzz(n):
+# #     for i in range(n):
+# #         if i % 3 == 0 and i % 5 == 0:
+# #             print("fizzBuzz")
+# #         elif i % 3 == 0:
+# #             print("Fizz")
+# #         elif i % 5 == 0:
+# #             print("Buzz")
+# #         else:
+# #             print(i)
 
 
-print(has_all_unique_characters("abcdef"))
-print(has_all_unique_characters("aabbcc"))
-print(has_all_unique_characters(""))
+# # fizzBuzz(15)
+
+
+# def has_all_unique_characters(s):
+#     if s == "":
+#         return True
+#     else:
+#         input_array = s.split()
+#         return len(input_array) == len(set(input_array))
+
+
+# print(has_all_unique_characters("abcdef"))
+# print(has_all_unique_characters("aabbcc"))
+# print(has_all_unique_characters(""))
+
+
+# palabra = "animar"
+
+# char_count = {}
+
+# for char in palabra:
+#     if char not in char_count:
+#         char_count[char] = 1
+#     else:
+#         char_count[char] += 1
+
+# char_count["e"] += 2
+
+# print(char_count["e"])
+
+
+# high_score = 0
+# top_player = ""
+#     for name, score in dictionary.items:
+#         if score <= high_score:
+#             high_score = score
+#             print(high_score)
+#             top_player = name
+#             print(top_player)
+#     return [top_player, score]

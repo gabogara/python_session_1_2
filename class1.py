@@ -55,19 +55,25 @@ integer x and returns the element at index x in items. If x is not a valid index
 """
 
 
+def get_item(items, x):
+    if x < 0 or (x > (len(items))):
+        return None
+    return items[x]
+
+
 # def get_item(items, x):
 #     if len(items) <= 0 or x > len(items):
 #         return None
 #     return items[x]
 
 
-# items = ["piglet", "pooh", "roo", "rabbit"]
-# x = 2
+items = ["piglet", "pooh", "roo", "rabbit"]
+x = 2
 # print(get_item(items, x))
 
 
-# items = ["piglet", "pooh", "roo", "rabbit"]
-# x = 5
+items = ["piglet", "pooh", "roo", "rabbit"]
+x = 3
 # print(get_item(items, x))
 """
 5) Winnie the Pooh wants to know how much honey he has. 
@@ -82,20 +88,23 @@ def sum_honey(hunny_jars):
         return 0
 
     acum = 0
+
+    for i in range(len(hunny_jars)):
+        acum += hunny_jars[i]
     # for i in range(len(hunny_jars)):
     #     acum += hunny_jars[i]
     # return acum
 
-    for i, value in enumerate(hunny_jars):
-        acum += value
+    # for i, value in enumerate(hunny_jars):
+    #     acum += value
     return acum
 
 
-# hunny_jars = [2, 3, 4, 5]
-# print(sum_honey(hunny_jars))
+hunny_jars = [2, 3, 4, 5]
+print(sum_honey(hunny_jars))
 
-# hunny_jars = []
-# print(sum_honey(hunny_jars))
+hunny_jars = []
+print(sum_honey(hunny_jars))
 
 
 """
@@ -172,10 +181,17 @@ Pooh's To Dos:
 
 
 def print_todo_list(task):
+    # version 1
+    # if len(task) == 0:
+    #     print("Pooh's To Dos:")
+    # for i in range(len(task)):
+    #     print(f"{i+1}. {task[i]}")
+    # version2
+    print("Pooh's To Dos:")
     if len(task) == 0:
-        print("Pooh's To Dos:")
-    for i in range(len(task)):
-        print(f"{i+1}. {task[i]}")
+        return
+    for count, subtask in enumerate(task, start=1):
+        print(f"{count} {subtask}")
 
 
 task = [
@@ -184,11 +200,11 @@ task = [
     "Think",
     "Stoutness Exercises",
 ]
-# print_todo_list(task)
+print_todo_list(task)
 
 
-# task = []
-# print_todo_list(task)
+task = []
+print_todo_list(task)
 """
 9) Rabbit is very particular about his belongings and wants to own an even number of each thing he owns. 
 Write a function can_pair() that accepts a list of integers item_quantities. 
@@ -249,6 +265,17 @@ and returns a new string with the letters t, i, g, e, and r removed from it.
 
 
 def tiggerfy(s):
+    s1 = s.strip()
+    s2 = s1.lower()
+
+    palabras = set("tiger")
+    result = ""
+
+    for i in range(len(s2)):
+        if s2[i] not in palabras:
+            result = result + s1[i]
+    return result
+
     # forma larga ---------------
     # str = s.lower()
     # result = " "
@@ -258,16 +285,16 @@ def tiggerfy(s):
     #         result += char
     # return result
     # forma corta ---------------------
-    return "".join(c for c in s if c not in "tiger")
+    # return "".join(c for c in s if c not in "tiger")
 
 
-s = "suspicerous"
+# s = "suspicerous"
 # print(tiggerfy(s))
 
-s = "Trigger"
+# s = "Trigger"
 # print(tiggerfy(s))
 
-s = "Hunny"
+# s = "Hunny"
 # print(tiggerfy(s))
 
 
@@ -280,23 +307,21 @@ a list of the indices of any elements with value "thistle".
 
 
 def locate_thistles(items):
-    WORD = "thistle"
+    find = "thistle"
     result = []
-    if WORD not in items:
-        return result
-
+    if find not in items:
+        return []
     for i in range(len(items)):
-        if WORD == items[i]:
+        if find == items[i]:
             result.append(i)
     return result
 
 
-items = ["thistle", "stick", "carrot", "thistle", "eeyore's tail"]
+# items = ["thistle", "stick", "carrot", "thistle", "eeyore's tail"]
 # print(locate_thistles(items))
 
-items = ["book", "bouncy ball", "leaf", "red balloon"]
+# items = ["book", "bouncy ball", "leaf", "red balloon"]
 # print(locate_thistles(items))
-
 
 """------------------------------------------------------------------------------------
                                 SET VERSION 2 
@@ -531,14 +556,14 @@ def running_sum(superhero_stats):
     return superhero_stats
 
 
-superhero_stats = [1, 2, 3, 4]
-print(running_sum(superhero_stats))
+# superhero_stats = [1, 2, 3, 4]
+# print(running_sum(superhero_stats))
 
-superhero_stats = [1, 1, 1, 1, 1]
-print(running_sum(superhero_stats))
+# superhero_stats = [1, 1, 1, 1, 1]
+# print(running_sum(superhero_stats))
 
-superhero_stats = [3, 1, 2, 10, 1]
-print(running_sum(superhero_stats))
+# superhero_stats = [3, 1, 2, 10, 1]
+# print(running_sum(superhero_stats))
 
 """
 12) Write a function shuffle() that accepts a list cards of 2n elements in the form 
@@ -555,11 +580,11 @@ def shuffle(cards):
     return result
 
 
-cards = ["Joker", "Queen", 2, 3, "Ace", 7]
-print(shuffle(cards))
+# cards = ["Joker", "Queen", 2, 3, "Ace", 7]
+# print(shuffle(cards))
 
-cards = [9, 2, 3, "Joker", "Joker", 3, 2, 9]
-print(shuffle(cards))
+# cards = [9, 2, 3, "Joker", "Joker", 3, 2, 9]
+# print(shuffle(cards))
 
-cards = [10, 10, 2, 2]
-print(shuffle(cards))
+# cards = [10, 10, 2, 2]
+# print(shuffle(cards))
