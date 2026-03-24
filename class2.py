@@ -208,12 +208,113 @@ def final_value_after_operations(operations):
     return solution
 
 
-operations = ["trouncy", "flouncy", "flouncy"]
-print(final_value_after_operations(operations))
+# operations = ["trouncy", "flouncy", "flouncy"]
+# print(final_value_after_operations(operations))
 
-operations = ["bouncy", "bouncy", "flouncy"]
-print(final_value_after_operations(operations))
+# operations = ["bouncy", "bouncy", "flouncy"]
+# print(final_value_after_operations(operations))
 
+"""
+6) Given an array of strings words and a string s, implement a function is_acronym() that returns True 
+if s is an acronym of words and returns False otherwise.
+
+The string s is considered an acronym of words if it can be formed by concatenating the first character 
+of each string in words in order. For example, "pb" can be formed from ["pooh"", "bear"], 
+but it can't be formed from ["bear", "pooh"].
+
+"""
+
+
+# approach 1
+# def is_acronym(words, s):
+#     s1 = set(s)
+#     for word in words:
+#         if word[0] not in s1:
+#             return False
+#     return True
+def is_acronym(words, s):
+    if len(words) != len(s):
+        return False
+    for i, value in enumerate(words):
+        if s[i] != value[0]:
+            return False
+    return True
+
+
+# words = ["christopher", "robin", "milne"]
+# s = "crm"
+# print(is_acronym(words, s))
+
+# words = ["christopher", "robin", "milne"]
+# s = "ctm"
+# print(is_acronym(words, s))
+
+
+"""
+7) Write a function make_divisible_by_3() that accepts an integer array nums. 
+In one operation, you can add or subtract 1 from any element of nums. 
+Return the minimum number of operations to make all elements of nums divisible by 3.
+
+"""
+
+
+def make_divisible_by_3(nums):
+    counter = 0
+    for num in nums:
+        while num % 3 != 0:
+            if num % 3 == 1:
+                num -= 1
+                counter += 1
+            elif num % 3 == 2:
+                num += 1
+                counter += 1
+    return counter
+
+
+# nums = [1, 2, 3, 4]
+# print(make_divisible_by_3(nums))
+
+# nums = [3, 6, 9]
+# print(make_divisible_by_3(nums))
+
+
+"""
+8) Given two lists lst1 and lst2, write a function exclusive_elemts() 
+that returns a new list that contains the elements which are in lst1 but not in lst2 and the elements 
+that are in lst2 but not in lst1. 
+
+"""
+
+
+def exclusive_elemts(lst1, lst2):
+    result = {}
+    combined = lst1 + lst2
+    arr_result = []
+
+    for elem in combined:
+        if elem in result:
+            result[elem] += 1
+        else:
+            result[elem] = 1
+
+    for key, value in result.items():
+        if value == 1:
+            arr_result.append(key)
+
+    return arr_result
+
+
+lst1 = ["pooh", "roo", "piglet"]
+lst2 = ["piglet", "eeyore", "owl"]
+print(exclusive_elemts(lst1, lst2))
+
+lst1 = ["pooh", "roo"]
+lst2 = ["piglet", "eeyore", "owl", "kanga"]
+print(exclusive_elemts(lst1, lst2))
+
+lst1 = ["pooh", "roo", "piglet"]
+lst2 = ["pooh", "roo", "piglet"]
+print(exclusive_elemts(lst1, lst2))
 
 # # def fizzBuzz(n):
 # #     for i in range(n):
