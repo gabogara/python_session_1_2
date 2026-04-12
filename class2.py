@@ -304,17 +304,79 @@ def exclusive_elemts(lst1, lst2):
     return arr_result
 
 
-lst1 = ["pooh", "roo", "piglet"]
-lst2 = ["piglet", "eeyore", "owl"]
-print(exclusive_elemts(lst1, lst2))
+# lst1 = ["pooh", "roo", "piglet"]
+# lst2 = ["piglet", "eeyore", "owl"]
+# print(exclusive_elemts(lst1, lst2))
 
-lst1 = ["pooh", "roo"]
-lst2 = ["piglet", "eeyore", "owl", "kanga"]
-print(exclusive_elemts(lst1, lst2))
+# lst1 = ["pooh", "roo"]
+# lst2 = ["piglet", "eeyore", "owl", "kanga"]
+# print(exclusive_elemts(lst1, lst2))
 
-lst1 = ["pooh", "roo", "piglet"]
-lst2 = ["pooh", "roo", "piglet"]
-print(exclusive_elemts(lst1, lst2))
+# lst1 = ["pooh", "roo", "piglet"]
+# lst2 = ["pooh", "roo", "piglet"]
+# print(exclusive_elemts(lst1, lst2))
+
+
+"""
+9) Write a function merge_alternately() that accepts two strings word1 and word2. 
+Merge the strings by adding letters in alternating order, starting with word1. 
+If a string is longer than the other, append the additional letters onto the end of the merged string.
+
+Return the merged string.
+"""
+
+
+def merge_alternately(word1, word2):
+    result = ""
+    dif = len(word1) == len(word2)
+    if not dif:
+        if len(word1) > len(word2):
+            for k in range(len(word2)):
+                result = result + word1[k] + word2[k]
+            for p in range(len(word2), len(word1)):
+                result = result + word1[p]
+        else:
+            for m in range(len(word1)):
+                result = result + word1[m] + word2[m]
+            for o in range(len(word1), len(word2)):
+                result = result + word2[o]
+    else:
+        for j in range(len(word1)):
+            result = result + word1[j] + word2[j]
+    return result
+
+
+word1 = "wol"
+word2 = "oze"
+print(merge_alternately(word1, word2))
+
+word1 = "hfa"
+word2 = "eflump"
+print(merge_alternately(word1, word2))
+
+word1 = "eyre"
+word2 = "eo"
+print(merge_alternately(word1, word2))
+
+"""
+10) 
+"""
+
+
+"""------------------------------------------------------------------------------------
+                                SET VERSION 2 
+
+-------------------------------------------------------------------------------------------
+"""
+
+"""
+1) Given two string arrays word1 and word2, return True if the two arrays represent the same string, 
+and False otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.
+"""
+
+
 
 # # def fizzBuzz(n):
 # #     for i in range(n):
